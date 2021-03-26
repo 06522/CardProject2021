@@ -46,6 +46,49 @@ function populate(cards) {
   return cards;
 }
 
+function compare(p1Card, p2Card) {
+  let p1num = p1Card.substring(0,2);
+  p1num.replace(/\s+/g, '');
+  parseInt(p1num);
+  let p2num = p2Card.substring(0,2);
+  p2num.replace(/\s+/g, '');
+  parseInt(p2num);
+  let p1colour = p1Card.substring(5,12);
+  p1colour.replace(/\s+/g, '');
+  let p2colour = p2Card.substring(5,12);
+  p2colour.replace(/\s+/g, '');
+  if (p1colour == p2colour) {
+    if (p1num > p2num) {
+      return "Player 1 is the winner of this round with " + p1Card;
+    } else {
+      return "Player 2 is the winner of this round with " + p2Card;
+    }
+  } else if (p1colour == "red") {
+    if (p2colour == "black") {
+      return "Player 1 is the winner of this round with " + p1Card;
+    } else {
+      return "Player 2 is the winner of this round with " + p2Card;
+    }
+  } else if (p1colour == "yellow") {
+    if (p2colour == "red") {
+      return "Player 1 is the winner of this round with " + p1Card;
+    } else {
+      return "Player 2 is the winner of this round with " + p2Card;
+    }
+  } else {
+    if (p2colour == "yellow") {
+      return "Player 1 is the winner of this round with " + p1Card;
+    } else {
+      return "Player 2 is the winner of this round with " + p2Card;
+    }
+  }
+}
+
 const cards = [[],[],[]];
 console.log(populate(cards));
 console.log(shuffle(cards));
+
+//for the moment - will change
+let p1Card = cards[0][0];
+let p2Card = cards[0][1];
+console.log(compare(p1Card, p2Card));
